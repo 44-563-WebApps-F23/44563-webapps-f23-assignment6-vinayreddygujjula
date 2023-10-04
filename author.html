@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Author Page</title>
+</head>
+<body>
+    <h1>Author entry Vinay Reddy Gujjula</h1>
+    <form>
+        <label for="author_name">The hidden author name</label>
+        <input type="password" id="author_name" name="author_name" value="Dickens"> <br>
+        <label for="user_guess">Guess the author</label>
+        <input type="text" id="user_guess" name="user_guess"> <br>
+        <input type="button" onclick="checkAuthor()" value="Check the guess">
+    </form>
+    <p id="result"> Right/Wrong ???</p>
+    <script>
+        let good = 0;
+        let oops = 0;
+        function checkAuthor() {
+            hidden_author_name = document.getElementById("author_name").value
+            user_author_guess = document.getElementById("user_guess").value
+            out = document.getElementById("result")
+            if (hidden_author_name == user_author_guess) {
+                good = good + 1;
+                alert("You got it right");
+                out.innerHTML = `Correct Guess!!! Good: ${good}`;
+            }
+            else {
+                oops = oops + 1;
+                alert("Sorry");
+                out.innerHTML = `Wrong Guess!!! Oops: ${oops}`;
+            }
+        }
+    </script>
+</body>
+</html>
