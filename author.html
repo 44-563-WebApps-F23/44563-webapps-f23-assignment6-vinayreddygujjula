@@ -2,6 +2,12 @@
 <html>
 <head>
     <title>Author Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .shadow {
+            text-shadow: 4px 4px 4px yellow;
+        }
+    </style>
 </head>
 <body>
     <h1>Author entry Vinay Reddy Gujjula</h1>
@@ -10,9 +16,13 @@
         <input type="password" id="author_name" name="author_name" value="Dickens"> <br>
         <label for="user_guess">Guess the author</label>
         <input type="text" id="user_guess" name="user_guess"> <br>
-        <input type="button" onclick="checkAuthor()" value="Check the guess">
+        <input type="button" id="resultButton" onclick="checkAuthor()" value="Check the guess">
     </form>
-    <p id="result"> Right/Wrong ???</p>
+    <div class="container">
+        <b>
+            <p class="text-danger ml-3" style="font-size: larger;" id="result"> Right/Wrong ???</p>
+        </b>
+    </div>
     <script>
         let good = 0;
         let oops = 0;
@@ -26,9 +36,17 @@
                 out.innerHTML = `Correct Guess!!! Good: ${good}`;
             }
             else {
-                oops = oops + 1;
-                alert("Sorry");
-                out.innerHTML = `Wrong Guess!!! Oops: ${oops}`;
+                oops++;
+                if (oops >= 7) {
+                    document.getElementById("resultButton").onclick = function () {
+                        alert("Sorry, ran out of guesses");
+                    };
+                    out.innerHTML = `Wrong Guess!!! Oops: ${oops}`;
+                }
+                else {
+                    alert("Sorry");
+                    out.innerHTML = `Wrong Guess!!! Oops: ${oops}`;
+                }
             }
         }
         let useImage = 1;
