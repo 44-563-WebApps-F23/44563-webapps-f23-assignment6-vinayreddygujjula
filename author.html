@@ -31,6 +31,31 @@
                 out.innerHTML = `Wrong Guess!!! Oops: ${oops}`;
             }
         }
+        let useImage = 1;
+        function selectImage() {
+            var image = document.getElementById("London");
+            switch (useImage) {
+                case 1: {
+                    image.src = "London.jpg";
+                    useImage = 2;
+                    break;
+                }
+                case 2: {
+                    image.src = "Jamesport.jpg";
+                    useImage = 3;
+                    break;
+                }
+                case 3: {
+                    image.src = "gurugram.jpg";
+                    useImage = 1;
+                    break;
+                }
+            }
+        }
     </script>
+    <div>
+        <img src="London.jpg" id="London" height=100 width=100 alt="Image of London" onclick="selectImage()"
+            class="ml-3 img-thumbnail">
+    </div>
 </body>
 </html>
